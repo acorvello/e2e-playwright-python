@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+report.html
+test-results/
+playwright-report/
+.pytest_cache/
+.env
