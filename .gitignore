@@ -5,5 +5,6 @@ venv/
 report.html
 test-results/
 playwright-report/
+results/
 .pytest_cache/
 .env

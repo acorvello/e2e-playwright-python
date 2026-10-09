@@ -56,3 +56,7 @@ image, triggered by a Jenkins pipeline. See that project's
 - Generate an HTML report (`pytest-html`) and publish it as a CI artifact
 - Cover the cart and checkout flow
 - API tests complementing the UI tests
+
+## ⚖️ License
+
+This repository is licensed under the **MIT License**. Feel free to clone, study, modify, and distribute the code for educational or portfolio purposes.
