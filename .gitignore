@@ -8,3 +8,4 @@ playwright-report/
 results/
 .pytest_cache/
 .env
+.scannerwork/
