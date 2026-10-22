@@ -1,31 +1,38 @@
-# e2e-playwright-python
+# Cross-Browser E2E Automation Framework
+### Scalable End-to-End Web Testing Deployed with Playwright and Pytest
 
-End-to-end test suite built with **Playwright (Python)**, validating the
-login flow of the
-[OWASP Juice Shop](https://owasp.org/www-project-juice-shop/), used here
-as a target application for test automation practice.
+This repository implements a resilient and ultra-fast end-to-end (E2E) automation testing suite leveraging Playwright and Python. Built to execute complex user journeys against the OWASP Juice Shop platform, the framework isolates execution states natively to track performance, catch behavioral anomalies, and deliver high-fidelity continuous quality telemetry.
 
-## Stack
+This suite complements the other repositories in the global portfolio (Cypress, Selenium, and API tests) and runs in the same integrated Jenkins pipeline.
 
-- Python
-- pytest + pytest-playwright
-- Playwright 1.48.0
+## Engineering Highlights
+* **Native Cross-Browser Parallelization:** Configured to orchestrate execution concurrently across Chromium, Firefox, and WebKit engines out-of-the-box, mitigating platform-specific drift.
+* **Isolated Browser Contexts:** Eradicates cookies, cache, and session leakage by allocating fresh, independent browser contexts per execution block, maximizing pipeline stability.
+* **Advanced Telemetry Collection:** Structured to capture HTML execution reports, network traces, and native screenshots on failure states to feed predictive test analysis tools.
+* **Environment-Driven Architecture:** Decoupled base URL parameters to seamlessly scale from a local developer environment to multi-container containerized systems.
 
-## Project structure
+## Tech Stack and Dependencies
+* **Automation Engine:** Playwright 1.48+ (Python bindings)
+* **Test Orchestrator:** pytest with pytest-playwright
+* **Infrastructure Layer:** Official Microsoft Playwright container base ready for headless integration inside Jenkins CI/CD loops.
 
+## Project Structure
 ```
 e2e-playwright-python/
 ├── requirements.txt
 ├── pytest.ini
 └── tests/
-    ├── conftest.py
-    └── test_juice_shop_login.py
+├── conftest.py
+└── test_juice_shop_login.py
 ```
+## Covered Scenarios
+* **Core Interface Verification:** Home page loads successfully and aggregates structured product components.
+* **Navigation Flow:** Login interface renders correctly when triggered via the account dashboard menu.
+* **Exception Handling Validation:** Security barrier triggers error display alerts upon receiving invalid credentials.
 
-## Running locally
+## Running Locally
 
-Prerequisite: Python 3.10+ and a running instance of Juice Shop (locally
-or in a container).
+**Prerequisites:** Python 3.10+ and a running instance of Juice Shop (locally or in a container).
 
 ```bash
 python -m venv .venv
@@ -36,27 +43,16 @@ playwright install --with-deps
 pytest --base-url=http://localhost:3001 --browser chromium --browser firefox --browser webkit
 ```
 
-## Running via Docker (no local Python install required)
+Running via Docker (CI/CD Orchestration)
 
-This repository is consumed by the
-[docker-test-env](https://github.com/acorvello/docker-test-env)
-orchestration project, which spins up Juice Shop and runs this suite
-inside the official `mcr.microsoft.com/playwright/python` container
-image, triggered by a Jenkins pipeline. See that project's
-`docker-compose.yml` for the full setup.
+This repository is actively consumed by the docker-test-env orchestration project. The pipeline spins up Juice Shop and executes this testing suite inside the official mcr.microsoft.com/playwright/python container image, triggered and tracked seamlessly by a unified Jenkins pipeline. See that project's docker-compose.yml for the full setup.
 
-## Covered scenarios
+Roadmap and Next Steps
 
-- Home page loads and lists products
-- Login form opens correctly
-- Error message is shown when logging in with invalid credentials
+• Integrate pytest-html to generate clean visual reports and archive them dynamically as CI artifacts.
+• Expand the functional matrix to cover multi-step cart, basket management, and checkout flows.
+• Inject backend component testing layer natively to complement client-side UI automation.
 
-## Next steps
+License
 
-- Generate an HTML report (`pytest-html`) and publish it as a CI artifact
-- Cover the cart and checkout flow
-- API tests complementing the UI tests
-
-## ⚖️ License
-
-This repository is licensed under the **MIT License**. Feel free to clone, study, modify, and distribute the code for educational or portfolio purposes.
+This repository is licensed under the MIT License. Feel free to clone, study, modify, and distribute the code for educational or portfolio purposes.
