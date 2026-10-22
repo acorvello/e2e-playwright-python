@@ -56,3 +56,6 @@ Roadmap and Next Steps
 License
 
 This repository is licensed under the MIT License. Feel free to clone, study, modify, and distribute the code for educational or portfolio purposes.
+
+---
+<sub>Keywords: Playwright, Python, Pytest, E2E Automation, Cross-Browser, UI Testing, Telemetry, Docker, CI/CD Jenkins, Headless Runner, Test Orchestration, Software Engineering.
